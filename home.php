@@ -245,7 +245,7 @@ $products = $conn->query($sql);
   <header class="navbar">
   <button class="menu-toggle" onclick="openSidebar()">☰</button>
   <div class="logo">
-    <img src="image/logo87.png" alt="โลโก้ร้าน" />
+    <img src="image/Logoblack.png" alt="โลโก้ร้าน" />
     <span>AKKRASIN87</span>
   </div>
   <nav class="menu">
