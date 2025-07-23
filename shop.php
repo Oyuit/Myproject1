@@ -149,24 +149,6 @@ $products = $conn->query($sql);
   filter: brightness(0.5);
 }
 
-
-    /* ...existing code... */
-  .slideshow-container {
-  position: relative;
-  max-width: 2000px;   /* กำหนดความกว้างเท่ากับภาพ */
-  height: 480px;       /* กำหนดความสูงเท่ากับภาพ */
-  margin: auto;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-  .slides {
-  display: none;
-  width: 100%;
-  height: 480px;       /* กำหนดความสูงเท่ากับภาพ */
-  object-fit: cover;
-}
-
     
     .products {
       background: linear-gradient(135deg, #434343, #000000);
@@ -274,82 +256,32 @@ $products = $conn->query($sql);
   </form>
 </header>
 
+  <section class="products container">
+  <h2>สินค้าในร้าน</h2>
+  <div class="row g-4">
+    <?php if ($products && $products->num_rows > 0): ?>
+      <?php while ($row = $products->fetch_assoc()): ?>
+        <div class="col-md-3 col-sm-6">
+          <div class="product-card">
+            <img src="image/<?= htmlspecialchars($row['image_url']) ?>" alt="รูปสินค้า">
+            <h5><?= htmlspecialchars($row['product_name']) ?></h5>
+            <p class="text-muted">รุ่น: <?= htmlspecialchars($row['model_name']) ?></p>
+            <p class="text-danger fw-bold"><?= number_format($row['price'], 2) ?> บาท</p>
+            <p class="small text-dark"><?= htmlspecialchars($row['description']) ?></p>
+            <a href="#" class="btn btn-sm btn-outline-danger">ดูรายละเอียด</a>
+          </div>
+        </div>
+      <?php endwhile; ?>
+    <?php else: ?>
+      <p class="text-center text-light">ยังไม่มีสินค้าในระบบ</p>
+    <?php endif; ?>
+  </div>
+</section>
 
-  <section class="products">
-    <h2>สินค้าแนะนำ</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="image/1.jpg" alt="ยางรถ" />
-        <h3>ยางมอเตอร์ไซค์</h3>
-        <p>ราคา 650 บาท</p>
-        <button>สั่งซื้อ</button>
-      </div>
-      <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
-        <h3>แบตเตอรี่</h3>
-        <p>ราคา 850 บาท</p>
-        <button>สั่งซื้อ</button>
-      </div>
-      <div class="product-card">
-        <img src="image/2.jpg" alt="ผ้าเบรก" />
-        <h3>ผ้าเบรก</h3>
-        <p>ราคา 350 บาท</p>
-        <button>สั่งซื้อ</button>
-      </div>
-      <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
-        <h3></h3>
-        <p>ราคา 850 บาท</p>
-        <button>สั่งซื้อ</button>
-      </div>
-      <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
-        <h3></h3>
-        <p>ราคา 850 บาท</p>
-        <button>สั่งซื้อ</button>
-      </div>
-      <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
-        <h3></h3>
-        <p>ราคา 850 บาท</p>
-        <button>สั่งซื้อ</button>
-      </div>
-    </div>
-    
-  </section>
 
   <footer class="footer">
     <p>&copy; 2025 AKKRASIN87 | โทร: 081-234-5678 | Line: @akkrain87</p>
   </footer>
-
-  <script>
-    let slideIndex = 0;
-    const slides = document.getElementsByClassName("slides");
-
-    function showSlides() {
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {
-        slideIndex = 1;
-      }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 4000); // เปลี่ยนภาพทุก 4 วินาที
-    }
-
-    // เริ่มแสดงสไลด์
-    showSlides();
-  </script>
-  <script>
-  function openSidebar() {
-    document.getElementById("sidebar").style.width = "250px";
-  }
-
-  function closeSidebar() {
-    document.getElementById("sidebar").style.width = "0";
-  }
-</script>
 
 
 </body>
