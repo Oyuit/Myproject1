@@ -231,7 +231,7 @@ $products = $conn->query($sql);
     <span>AKKRASIN87</span>
   </div>
   <nav class="menu">
-    <a href="#">หน้าแรก</a>
+    <a href="home.php">หน้าแรก</a>
     <a href="#">สินค้า</a>
     <a href="#">เกี่ยวกับเรา</a>
     <a href="#">ติดต่อ</a>

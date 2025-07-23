@@ -200,7 +200,7 @@ $products = $conn->query($sql);
 
     .product-card img {
       width: 100%;
-      height: 160px;
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 10px;
@@ -248,9 +248,8 @@ $products = $conn->query($sql);
     <img src="image/Logoblack.png" alt="โลโก้ร้าน" />
     <span>AKKRASIN87</span>
   </div>
-  <nav class="menu">
-    <a href="#">หน้าแรก</a>
-    <a href="#">สินค้า</a>
+  <nav class="menu"> 
+    <a href="shop.php">สินค้า</a>
     <a href="#">เกี่ยวกับเรา</a>
     <a href="#">ติดต่อ</a>
     <a href="login.php">เข้าสู่ระบบ</a>
@@ -274,13 +273,23 @@ $products = $conn->query($sql);
   </form>
 </header>
 
+  <!-- Slideshow -->
+  <section class="hero">
+    <div class="slideshow-container">
+      <img class="slides" src="image/p.1.png" alt="แบนเนอร์ 1" />
+      <img class="slides" src="image/p.2.png" alt="แบนเนอร์ 2" />
+      <img class="slides" src="image/HOT_PRPMOTION_5.png" alt="แบนเนอร์ 3" />
+
+      
+    </div>
+  </section>
 
   <section class="products">
     <h2>สินค้าแนะนำ</h2>
     <div class="product-grid">
       <div class="product-card">
-        <img src="image/1.jpg" alt="ยางรถ" />
-        <h3>ยางมอเตอร์ไซค์</h3>
+        <img src="image/motul3.png" alt="ยางรถ" />
+        <h3>น้ำมันเครื่อง</h3>
         <p>ราคา 650 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
