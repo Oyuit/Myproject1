@@ -308,19 +308,19 @@ $products = $conn->query($sql);
       </div>
       <div class="product-card">
         <img src="image/2.jpg" alt="แบตเตอรี่" />
-        <h3>แบตเตอรี่</h3>
+        <h3></h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
         <img src="image/2.jpg" alt="แบตเตอรี่" />
-        <h3>แบตเตอรี่</h3>
+        <h3></h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
         <img src="image/2.jpg" alt="แบตเตอรี่" />
-        <h3>แบตเตอรี่</h3>
+        <h3></h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
