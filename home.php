@@ -16,6 +16,7 @@ $products = $conn->query($sql);
   <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
   <title>Navbar พร้อมแถบข้าง</title>
   <style>
+    
     * {
       margin: 0;
       padding: 0;
@@ -36,6 +37,7 @@ $products = $conn->query($sql);
   overflow-x: hidden;
   transition: 0.3s;
   padding-top: 60px;
+  
 }
 
 .sidebar a {
@@ -96,17 +98,57 @@ $products = $conn->query($sql);
       height: 50px;
     }
 
-    .menu a {
-      color: #ffffffff;
-      text-decoration: none;
-      margin-left: 20px;
-      transition: color 0.3s;
-    }
+.menu {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-    .menu a:hover {
-      color: #000000ff;
-    }
-    .search-form {
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffd700;
+}
+
+/* ========== Responsive Menu ========== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .menu {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .search-form {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+
+  .search-form input[type="text"] {
+    width: 100%;
+  }
+
+  .menu-toggle {
+    align-self: flex-end;
+  }
+}
+
+  .search-form {
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -152,20 +194,17 @@ $products = $conn->query($sql);
 
     /* ...existing code... */
   .slideshow-container {
-  position: relative;
-  max-width: 2000px;   /* กำหนดความกว้างเท่ากับภาพ */
-  height: 480px;       /* กำหนดความสูงเท่ากับภาพ */
-  margin: auto;
-  overflow: hidden;
-  border-radius: 10px;
+  width: 100%;
+  height: auto;
 }
 
-  .slides {
-  display: none;
-  width: 100%;
-  height: 480px;       /* กำหนดความสูงเท่ากับภาพ */
+.slides {
+  height: auto;
+  max-height: 480px;
   object-fit: cover;
+  width: 100%;
 }
+
 
     
     .products {
@@ -180,12 +219,12 @@ $products = $conn->query($sql);
     }
 
     .product-grid {
-      
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 20px;
-      padding: 0 10px;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* เปลี่ยนจาก 500px เป็น 250px */
+  gap: 20px;
+  padding: 0 10px;
+}
+
 
     .product-card {
       background: linear-gradient(135deg, #1a1a1a, #4d4d4d, #ff0000);      border-radius: 10px;
@@ -197,6 +236,12 @@ $products = $conn->query($sql);
     .product-card:hover {
       transform: translateY(-5px);
     }
+    
+    @media (max-width: 768px) {
+  .product-card img {
+    height: 150px; /* หรือ auto */
+  }
+}
 
     .product-card img {
       width: 100%;
@@ -204,6 +249,7 @@ $products = $conn->query($sql);
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 10px;
+      
     }
 
     .product-card h3 {
@@ -263,6 +309,8 @@ $products = $conn->query($sql);
   <a href="#">เกี่ยวกับเรา</a>
   <a href="#">ติดต่อ</a>
   <a href="login.php">เข้าสู่ระบบ</a>
+  <a href="#" onclick="closeSidebar()">สินค้า</a>
+
 </div>
 
   <form class="search-form" onsubmit="return false;">
@@ -294,7 +342,7 @@ $products = $conn->query($sql);
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
+        <img src="image/p.png" alt="แบตเตอรี่" />
         <h3>แบตเตอรี่</h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
@@ -359,7 +407,6 @@ $products = $conn->query($sql);
     document.getElementById("sidebar").style.width = "0";
   }
 </script>
-
 
 </body>
 </html>
