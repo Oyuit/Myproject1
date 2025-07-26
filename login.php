@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $user['password'])) {
             $_SESSION['customer_id'] = $user['user_id'];
             $_SESSION['customer_name'] = $user['name'];
-
+          
             header("Location: customer_dashboard.php");
             exit();
         } else {
@@ -110,11 +110,12 @@ $products = $conn->query("SELECT * FROM products");
   </style>
 </head>
 <body>
-  <?php if (!empty($error)) { ?>
-    <p style="color:red; text-align:center;"><?php echo $error; ?></p>
-  <?php } ?>
+  
   <div class="login-box">
     <h2>เข้าสู่ระบบ</h2>
+    <?php if (!empty($error)) { ?>
+    <p style="color:red; text-align:center;"><?php echo $error; ?></p>
+  <?php } ?>
     <form method="post" action="">
       <label for="username">ชื่อผู้ใช้:</label>
       <input type="text" id="username" name="username" required>
@@ -125,7 +126,7 @@ $products = $conn->query("SELECT * FROM products");
       <input type="submit" value="เข้าสู่ระบบ">
     </form>
     <div class="links">
-      <a href="#">สมัครสมาชิก</a> | <a href="#">ลืมรหัสผ่าน?</a>
+      <a href="register.php">สมัครสมาชิก</a> | <a href="#">ลืมรหัสผ่าน?</a>
     </div>
   </div>
 </body>
