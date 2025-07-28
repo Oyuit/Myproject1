@@ -240,10 +240,7 @@ $totalUsers = $conn->query("SELECT COUNT(*) FROM users")->fetch_row()[0];
   max-height: 480px;
   object-fit: cover;
   width: 100%;
-}
-
-
-    
+}   
     .products {
       background: linear-gradient(135deg, #434343, #000000);
       padding: 40px 20px;

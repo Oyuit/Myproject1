@@ -126,7 +126,7 @@ $products = $conn->query("SELECT * FROM products");
       <input type="submit" value="เข้าสู่ระบบ">
     </form>
     <div class="links">
-      <a href="register.php">สมัครสมาชิก</a> | <a href="#">ลืมรหัสผ่าน?</a>
+      <a href="register.php">สมัครสมาชิก</a> | <a href="forgot_password.php">ลืมรหัสผ่าน?</a>
     </div>
   </div>
 </body>
