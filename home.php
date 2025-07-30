@@ -115,7 +115,7 @@ $products = $conn->query($sql);
 
 .menu a:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  color: #ffd700;
+  color: #fcfbf7ff;
 }
 
 /* ========== Responsive Menu ========== */
@@ -326,7 +326,7 @@ $products = $conn->query($sql);
     <div class="slideshow-container">
       <img class="slides" src="image/p.1.png" alt="แบนเนอร์ 1" />
       <img class="slides" src="image/p.2.png" alt="แบนเนอร์ 2" />
-      <img class="slides" src="image/HOT_PRPMOTION_5.png" alt="แบนเนอร์ 3" />
+      <img class="slides" src="image/.png" alt="แบนเนอร์ 3" />
 
       
     </div>
@@ -336,39 +336,39 @@ $products = $conn->query($sql);
     <h2>สินค้าแนะนำ</h2>
     <div class="product-grid">
       <div class="product-card">
-        <img src="image/motul3.png" alt="ยางรถ" />
+        <img src="image/10c.png" alt="โซ่" />
+        <h3>โซ่</h3>
+        <p>ราคา 300 บาท</p>
+        <button>สั่งซื้อ</button>
+      </div>
+      <div class="product-card">
+        <img src="image/2c.png" alt="น้ำมันเครื่อง" />
         <h3>น้ำมันเครื่อง</h3>
-        <p>ราคา 650 บาท</p>
+        <p>ราคา 100 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/2c.png" alt="แบตเตอรี่" />
-        <h3>แบตเตอรี่</h3>
-        <p>ราคา 850 บาท</p>
+        <img src="image/3c.png" alt="ผ้น้ำมันเครื่อง" />
+        <h3>น้ำมันเครื่อง</h3>
+        <p>ราคา 100 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/3c.png" alt="ผ้าเบรก" />
-        <h3>ผ้าเบรก</h3>
-        <p>ราคา 350 บาท</p>
+        <img src="image/4c.png" alt="น้ำมันเครื่อง" />
+        <h3>น้ำมันเครื่อง</h3>
+        <p>ราคา 120 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/4c.png" alt="แบตเตอรี่" />
-        <h3></h3>
-        <p>ราคา 850 บาท</p>
-        <button>สั่งซื้อ</button>
-      </div>
-      <div class="product-card">
-        <img src="image/5c.png" alt="แบตเตอรี่" />
-        <h3></h3>
-        <p>ราคา 850 บาท</p>
+        <img src="image/5c.png" alt="น้ำมันเครื่อง" />
+        <h3>น้ำมันเครื่อง</h3>
+        <p>ราคา 120 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
         <img src="image/6c.png" alt="แบตเตอรี่" />
-        <h3></h3>
-        <p>ราคา 850 บาท</p>
+        <h3>น้ำมันเครื่อง</h3>
+        <p>ราคา 120 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
     </div>
