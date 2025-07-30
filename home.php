@@ -342,31 +342,31 @@ $products = $conn->query($sql);
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/p.png" alt="แบตเตอรี่" />
+        <img src="image/2c.png" alt="แบตเตอรี่" />
         <h3>แบตเตอรี่</h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/2.jpg" alt="ผ้าเบรก" />
+        <img src="image/3c.png" alt="ผ้าเบรก" />
         <h3>ผ้าเบรก</h3>
         <p>ราคา 350 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
+        <img src="image/4c.png" alt="แบตเตอรี่" />
         <h3></h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
+        <img src="image/5c.png" alt="แบตเตอรี่" />
         <h3></h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
       </div>
       <div class="product-card">
-        <img src="image/2.jpg" alt="แบตเตอรี่" />
+        <img src="image/6c.png" alt="แบตเตอรี่" />
         <h3></h3>
         <p>ราคา 850 บาท</p>
         <button>สั่งซื้อ</button>
