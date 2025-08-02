@@ -376,8 +376,23 @@ $products = $conn->query($sql);
   </section>
 
   <footer class="footer">
-    <p>&copy; 2025 AKKRASIN87 | โทร: 081-234-5678 | Line: @akkrain87</p>
-  </footer>
+  <div class="footer-content">
+    <div class="footer-info">
+      <p>&copy; 2025 AKKRASIN87 | โทร: 081-234-5678 | Line: @akkrain87</p>
+    </div>
+    <div class="footer-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3846.4971671326654!2d102.20409847585673!3d15.142326185944446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3119377c76b66125%3A0x43924006f590ac89!2z4Lij4LmJ4Liy4LiZ4Lit4Lix4LiE4Lij4Liq4Li04LiZODc!5e0!3m2!1sth!2sth!4v1701234567890!5m2!1sth!2sth"
+        width="100%"
+        height="200"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</footer>
 
   <script>
     let slideIndex = 0;
