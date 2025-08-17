@@ -24,7 +24,8 @@ $img = $p['image_url'] ? "../uploads/".h($p['image_url']) : "../uploads/no-image
 ?>
 <div class="row g-4">
   <div class="col-md-6">
-    <img src="<?= h($img) ?>" class="w-100 rounded" alt="<?= h($p['product_name']) ?>">
+    <!-- แสดงรูปสินค้าแบบใหญ่; มี fallback เช่นกัน -->
+    <img src="<?= h($img) ?>" class="w-100 rounded" alt="<?= h($p['product_name']) ?>" loading="lazy">
   </div>
   <div class="col-md-6">
     <h1 class="h3"><?= h($p['product_name']) ?></h1>

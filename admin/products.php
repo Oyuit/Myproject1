@@ -1,6 +1,8 @@
 <?php require_once '_header.php'; require_once __DIR__ . '/../app/csrf.php'; require_admin();
 
 // Handle create/update/delete
+// โฟลเดอร์เก็บรูป (ฝั่งเซิร์ฟเวอร์) — เก็บไฟล์จริงไว้ที่ /uploads
+// ใช้ realpath เพื่อได้ path แบบสมบูรณ์ ป้องกันพาธหลุด
 $upload_dir = realpath(__DIR__ . '/../uploads');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['create']) || isset($_POST['update'])) {
@@ -11,11 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $desc = trim($_POST['description'] ?? '');
     $model = !empty($_POST['compatible_model_id']) ? (int)$_POST['compatible_model_id'] : null;
     $imgname = null;
-    if (!empty($_FILES['image']['name'])) {
-      $ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+    // อัปโหลดรูปภาพ (ถ้ามีอัปโหลดมา)
+if (!empty($_FILES['image']['name'])) {
+      // ตรวจนามสกุลไฟล์เพื่อความปลอดภัย (อนุญาตเฉพาะ jpg/jpeg/png/webp)
+$ext = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
       if (in_array($ext, ['jpg','jpeg','png','webp'])) {
-        $imgname = time().'_'.preg_replace('/[^a-z0-9\.]+/i','_', $_FILES['image']['name']);
-        move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . '/' . $imgname);
+        // ตั้งชื่อไฟล์ใหม่ป้องกันชื่อชนกัน + กรองอักขระแปลกๆ ออก
+$imgname = time().'_'.preg_replace('/[^a-z0-9\.]+/i','_', $_FILES['image']['name']);
+        // ย้ายไฟล์จาก temp ไปเก็บในโฟลเดอร์ uploads
+move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . '/' . $imgname);
       }
     }
     if (isset($_POST['create'])) {
@@ -23,10 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $st->execute([$name,$desc,$price,$qty,$model,$imgname]);
     } else {
       if ($imgname) {
-        $st = $pdo->prepare("UPDATE products SET product_name=?, description=?, price=?, quantity=?, compatible_model_id=?, image_url=? WHERE product_id=?");
+        // อัปเดตสินค้า: ถ้าไม่ได้อัปโหลดรูปใหม่ จะคงค่า image_url เดิมไว้
+$st = $pdo->prepare("UPDATE products SET product_name=?, description=?, price=?, quantity=?, compatible_model_id=?, image_url=? WHERE product_id=?");
         $st->execute([$name,$desc,$price,$qty,$model,$imgname,$id]);
       } else {
-        $st = $pdo->prepare("UPDATE products SET product_name=?, description=?, price=?, quantity=?, compatible_model_id=? WHERE product_id=?");
+        // อัปเดตสินค้า: ถ้าไม่ได้อัปโหลดรูปใหม่ จะคงค่า image_url เดิมไว้
+$st = $pdo->prepare("UPDATE products SET product_name=?, description=?, price=?, quantity=?, compatible_model_id=? WHERE product_id=?");
         $st->execute([$name,$desc,$price,$qty,$model,$id]);
       }
     }

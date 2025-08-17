@@ -7,20 +7,39 @@ $sql = "SELECT p.*, m.model_name, b.brand_name
         LEFT JOIN motorcycle_models m ON p.compatible_model_id = m.model_id
         LEFT JOIN brands b ON m.brand_id = b.brand_id";
 $params = [];
-if ($q !== '') { $sql .= " WHERE p.product_name LIKE ? OR p.description LIKE ?"; $params = ["%$q%","%$q%"]; }
+if ($q !== '') { 
+  $sql .= " WHERE p.product_name LIKE ? OR p.description LIKE ?";
+  $params = ["%$q%","%$q%"]; 
+}
 $sql .= " ORDER BY p.product_id DESC";
-$st = $pdo->prepare($sql); $st->execute($params); $products = $st->fetchAll();
+$st = $pdo->prepare($sql); 
+$st->execute($params); 
+$products = $st->fetchAll();
 ?>
 <div class="d-flex align-items-center justify-content-between">
   <h1 class="h3 fw-bold">สินค้า</h1>
   <div class="text-muted">พบ <?= count($products) ?> รายการ</div>
 </div>
+
 <div class="row g-3 mt-1">
-<?php foreach ($products as $p): 
-  $img = $p['image_url'] ? "../uploads/".h($p['image_url']) : "../uploads/no-image.png"; ?>
+<?php foreach ($products as $p): ?>
+  <?php
+  /* รูปภาพสินค้า:
+   * - ถ้ามีชื่อไฟล์ในฐานข้อมูล จะใช้ไฟล์นั้น
+   * - แต่ถ้าไฟล์หาย/พาธผิด ให้ fallback เป็น no-image.png
+   * - ใช้ basename() เพื่อกัน path แปลกๆ ที่ผู้ใช้ใส่มา
+   */
+  $imgRel = "../uploads/" . basename($p['image_url'] ?? '');
+  $imgFs  = realpath(__DIR__ . "/../uploads/" . basename($p['image_url'] ?? ''));
+  if (empty($p['image_url']) || !$imgFs || !file_exists($imgFs)) {
+      $imgRel = "../uploads/no-image.png";
+  }
+  $img = $imgRel;
+  ?>
   <div class="col-12 col-md-6 col-lg-4">
     <div class="card h-100 shadow-sm">
-      <img src="<?= h($img) ?>" class="card-img-top" alt="<?= h($p['product_name']) ?>">
+      <!-- แสดงรูปสินค้า; ถ้าไฟล์หายจะ fallback เป็น no-image.png -->
+      <img src="<?= h($img) ?>" class="card-img-top" alt="<?= h($p['product_name']) ?>" loading="lazy">
       <div class="card-body d-flex flex-column">
         <div class="small text-muted mb-1">
           <?= h($p['brand_name'] ?? '-') ?> • <?= h($p['model_name'] ?? '-') ?>
@@ -38,4 +57,5 @@ $st = $pdo->prepare($sql); $st->execute($params); $products = $st->fetchAll();
   </div>
 <?php endforeach; ?>
 </div>
+
 <?php require_once __DIR__ . '/_footer.php'; ?>
